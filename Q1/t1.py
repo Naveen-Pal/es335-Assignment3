@@ -6,7 +6,6 @@ from collections import Counter
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Function to preprocess text
 def preprocess_text(text):
     text = re.sub('\n', '.', text)
     text = re.sub('[^a-zA-Z0-9 /.]', '', text)
@@ -30,7 +29,6 @@ def preprocess_text(text):
     return word_sequences
 
 p_text = preprocess_text(str(text))
-# Assume p_text is preprocessed text data (list of word sequences)
 all_words = [word for sentence in p_text for word in sentence]
 word_counts = Counter(all_words)
 vocab = sorted(word_counts)
